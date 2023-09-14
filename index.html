@@ -1230,7 +1230,7 @@
 
 
 		<script> Hitcm.addAsyncs({"https:\/\/hitter.ro\/vendor\/core\/libraries\/bootstrap\/5.1.3\/js\/bootstrap.min.js?v=1662020629":{"tagname":"script","event":"bootstrap-js"}}); </script>
-		<script> Hitcm.addAsyncs({"https:\/\/hitter.ro\/vendor\/core\/plugins\/cookiebar\/js\/postscribe.min.js?v=1662020782":{"tagname":"script"},"https:\/\/hitter.ro\/vendor\/core\/plugins\/cookiebar\/js\/cookiebar.js?v=1662020782":{"tagname":"script"}}); </script>
+		
 		
 		
 		
@@ -1314,158 +1314,9 @@
 		
 		
 		<div id="ck" style="display:none"></div>
-<div class="gdprChangePreferences gdprChangePreferences_btn cc-revoke cc-bottom cc-animate cc-color-override" style> 
-	Politica de Cookie
-</div>
-
-<script>
-function ihavecookies () {
-    var $element =$('body');
-    
-    var settings = $.extend({
-        cookieTypes: [{
-            type: 'Preferințe',
-            value: 'preferences',
-            description: 'Acestea sunt cookie-uri, care au legătură cu preferințele site-ului Dvs., de ex. aduce aminte de numele de utilizator, culorile site-ului etc.'
-        },
-        {
-            type: 'Analytics',
-            value: 'analytics',
-            description: 'Cookie-uri legate de vizitele site-ului, tipurile de browser etc.'
-        },
-        {
-            type: 'Marketing',
-            value: 'marketing',
-            description: 'Cookie-uri legate de marketing, de ex. newsletter, social media etc.'
-        }],
-        title: 'Noi suntem cookie-urile',
-        message: 'Acest site folosește cookie-uri. Navigând în continuare vă exprimați acordul pentru folosirea cookie-urilor conform Regulamentului (UE) 2016/679. Politică cookies',
-        link: '/',
-        delay: 2000,
-        expires: 30,
-        moreInfoLabel: 'Mai multe informații...',
-        acceptBtnLabel: 'Accept',
-        advancedBtnLabel: 'Personalizare',
-        closeBtnLabel: 'Nu, multumesc',
-        subtitle: 'Salut!',
-        
-        onAccept: function() {},
-        uncheckBoxes: false
-    });
-
-    var myCookie = getCookie('cookieControl');
-    var myCookiePrefs = getCookie('cookieControlPrefs');
-    
-    if (myCookiePrefs === false){
-        myCookiePrefs = "[]";
-    }
-
-        // var myCookieHere = getCookie('cookieControl');
-        var cookieMessage = '';
-        var cookieTypes = '';
-
-                	cookieTypes = '<li><input type="checkbox" class="_input_field" name="gdpr[]" value="necessary" checked="checked" disabled="disabled"> <label> <span class="cust_in_field"></span><span class="_field_title">Necesar</span></label></li>';
-
-$.each(settings.cookieTypes, function(index, field) {
-    if (field.type !== '' && field.value !== '') {
-        var cookieTypeDescription = '';
-        if (field.description !== false) {
-            cookieTypeDescription = ' title="' + field.description + '"';
-        }
-        preferencesString = JSON.parse(myCookiePrefs);
-
-        if (myCookiePrefs !== false) {
-        	
-            let checked = preferencesString.indexOf(field.value) !== -1 ? true : false;
-            cookieTypes += '<li>'
-            	+'<input type="checkbox" class="_input_field" id="gdpr-cookietype-' + field.value + '" name="gdpr[]" value="' + field.value + '" data-auto="on"'+(checked ? ' checked="checked"' : '')+'>'
-            	+'<label for="gdpr-cookietype-' + field.value + '"' + cookieTypeDescription + '>'
-            		+'<span class="cust_in_field"></span>'
-            		+'<span class="_field_title">' + field.type + '</span>'
-            	+'</label>'
-            	+'</li>';
-        }
-    }
-});
-
-cookieMessage = '<div id="gdpr-cookie-message"> <div class="background_img"></div><span>' + settings.subtitle + '</span><div class="cookie_title">' + settings.title + '</div><p>' + settings.message + ' <a href="' + settings.link + '">' + settings.moreInfoLabel + '</a><div id="gdpr-cookie-types" style="display:none;"><div class="cookie_pers_subtitle">Select cookies to accept</div><ul>' + cookieTypes + '</ul></div><p class="mt-4 btns_holder"><button id="gdpr-cookie-close" type="button">' + settings.closeBtnLabel + '</button><button id="gdpr-cookie-advanced" type="button">' + settings.advancedBtnLabel + '</button><button id="gdpr-cookie-accept" type="button">' + settings.acceptBtnLabel + '</button></p></div>';
-;
-        
-        setTimeout(function() {
-    		if (typeof cookieMessage !== 'undefined') {
-        		$($element).append(cookieMessage);
-
-				let bgimg = document.querySelector('.background_img');
-				if (bgimg) {
-					bgimg.style.backgroundColor = 'white';
-					let bgimgSrc = getComputedStyle(bgimg).backgroundImage.slice(4, -1).replace(/"/g, "");
-					let bgimgImage = new Image();
-					bgimgImage.addEventListener('load', function() {
-					   bgimg.style.backgroundColor = '';
-					});
-					bgimgImage.src = bgimgSrc;
-				}
-        	}
-            
-            if (myCookie !== false){
-                $('#gdpr-cookie-message').hide();    
-            }
-        }, 0);
-
-        $('body').on('click', '#gdpr-cookie-close', function() {
-
-        	window.localStorage.clear();
-
-        	deleteAllCookies();
-
-        	dropCookie(true, settings.expires);
-
-        	var prefs = [];
-
-        	setCookie('cookieControlPrefs', JSON.stringify(prefs), 365);
-
-            location.reload();
-            
-            settings.onAccept.call(this);
-        });
-
-        $('body').on('click', '#gdpr-cookie-accept', function() {
-
-            window.localStorage.clear();
-            
-            deleteAllCookies();
-
-            dropCookie(true, settings.expires);
-
-            var prefs = [];
-            $.each($('input[name="gdpr[]"]').serializeArray(), function(i, field) {
-                prefs.push(field.value);
-            });
-            setCookie('cookieControlPrefs', JSON.stringify(prefs), 365);
-
-            location.reload();
-            
-            settings.onAccept.call(this);
-        });
 
 
-        $('body').on('click', '#gdpr-cookie-advanced', function() {
-            $('#gdpr-cookie-types').slideDown('fast', function() {
-            });
-        });
 
-        if (myCookie === false) {
-        } else {
-            var cookieVal = true;
-            if (myCookie == 'false') {
-                cookieVal = false;
-            }
-            dropCookie(cookieVal, settings.expires);
-        }
-};
-
-
-</script>
 	
 
 </body></html>
